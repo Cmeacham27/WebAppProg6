@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Cost Calculator</title>
+</head>
+<body>
+
+<header>Cael Meacham Sales Computation</header>
+<h2>Getting Input</h2>
+
+<form>
+    <label for = "numberItems">Enter number items</label>
+    <input type = "number" id = "numberItems" value = "1"><br>
+
+    <label for = "itemCost">Enter the cost of one item</label>
+    <input type = "number" id = "itemCost" value = "20.0"><br>
+
+    <label for = "numberForDiscount">Enter number to get discount</label>
+    <input type = "number" id = "numberForDiscount" value = "10"><br>
+
+    <label for = "discountRate">Enter the discount rate</label>
+    <input type = "number" id = "discountRate" value = "0.15"><br>
+
+    <input type = "button" onclick = "doDiscount()" value = "Show costs">
+</form>
+
+<p id = "result">Costs are: </p>
+
+<script>
+    function doDiscount() {
+        let number = Number(document.getElementById("numberItems").value);
+        let cost = Number(document.getElementById("itemCost").value);
+        let discountRate = Number(document.getElementById("discountRate").value);
+        let discountAt = Number(document.getElementById("numberForDiscount").value);
+
+        let costs = "";
+
+        for (let i = 1; i <= 5; i = i + 1) {
+            let checkCount = i * number;
+            let totalCost = 0;
+
+            if (checkCount <= discountAt) {
+                totalCost = checkCount * cost;
+            } else {
+                let fullPriceItems = discountAt;
+                let discountedItems = checkCount - discountAt;
+                totalCost = (fullPriceItems * cost) + (discountedItems * cost * (1 - discountRate));
+            }
+
+            costs = costs + "checkCount " + checkCount + " is " + totalCost + "; ";
+        }
+
+        document.getElementById("result").innerHTML = "Costs are: " + costs;
+    }
+</script>
+
+</body>
+</html>
