@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
+<<!DOCTYPE html>
+<html>
 <head>
-    <title> Prog 6: Actors </title>
-    <header> Actors by Cael Meacham </header>
+    <title>Prog 6: Actors</title>
 </head>
-
 <body>
-<form>
-    <label for = "secret_actor"> Peter Pan </label>
-    <input type = "password" id = "secret_actor" value = "Robin Williams"> <br>
 
-    <label for = "guess_actor"> Who is the actor </label>
-    <input type = "text" id = "guess_actor"> <br>
+<header>Actors by Cael Meacham</header>
+<h2>Getting input</h2>
+
+<form>
+    <label for = "secret_actor">Peter Pan</label>
+    <input type = "password" id = "secret_actor" value = "Robin Williams"><br>
+
+    <label for = "guess_actor">Who is the actor</label>
+    <input type = "text" id = "guess_actor"><br>
 
     <input type = "button" onclick = "checkActor()" value = "Check the guess">
 </form>
 
-<p id = "result"> Correct: 0 | Incorrect: 0 </p>
+<p id = "result">Correct: 0 | Incorrect: 0</p>
+
+<div>
+    <img id = "food_img" src = "apple.jpg" width = "150" height = "150" onclick = "updatePic()">
+</div>
 
 <script>
     let correct = 0;
     let notCorrect = 0;
+    let usePic = 1;
 
     function checkActor() {
         let secret = document.getElementById("secret_actor").value;
@@ -35,6 +44,25 @@
         }
 
         document.getElementById("result").innerHTML = "Correct: " + correct + " | Incorrect: " + notCorrect;
+    }
+
+    function updatePic() {
+        let img = document.getElementById("food_img");
+
+        switch (usePic) {
+            case 1:
+                img.src = "apple.jpg";
+                usePic = 2;
+                break;
+            case 2:
+                img.src = "empanada.jpg";
+                usePic = 3;
+                break;
+            case 3:
+                img.src = "mushrooms.jpg";
+                usePic = 1;
+                break;
+        }
     }
 </script>
 
