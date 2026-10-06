@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Prog 6: Actors </title>
+    <header> Actors by Cael Meacham </header>
+</head>
+
+<body>
+<form>
+    <label for = "secret_actor"> Peter Pan </label>
+    <input type = "password" id = "secret_actor" value = "Robin Williams"> <br>
+
+    <label for = "guess_actor"> Who is the actor </label>
+    <input type = "text" id = "guess_actor"> <br>
+
+    <input type = "button" onclick = "checkActor()" value = "Check the guess">
+</form>
+
+<p id = "result"> Correct: 0 | Incorrect: 0 </p>
+
+<script>
+    let correct = 0;
+    let notCorrect = 0;
+
+    function checkActor() {
+        let secret = document.getElementById("secret_actor").value;
+        let guess = document.getElementById("guess_actor").value;
+
+        if (secret === guess) {
+            correct = correct + 1;
+            alert("That's right");
+        } else {
+            notCorrect = notCorrect + 1;
+            alert("Better luck next time");
+        }
+
+        document.getElementById("result").innerHTML = "Correct: " + correct + " | Incorrect: " + notCorrect;
+    }
+</script>
+
+</body>
+</html>
