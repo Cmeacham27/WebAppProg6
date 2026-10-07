@@ -5,8 +5,8 @@
 </head>
 <body>
 
-<header>Cael Meacham Sales Computation</header>
-<h2>Getting Input</h2>
+<header>Cael Meacham sales computation</header>
+<h2>Getting input</h2>
 
 <form>
     <label for = "numberItems">Enter number items</label>
@@ -25,6 +25,19 @@
 </form>
 
 <p id = "result">Costs are: </p>
+
+<form>
+    <input type = "radio" id = "op_mul" name = "operation" value = "mul" onclick = "chooseOp()">
+    <label for = "op_mul">product</label><br>
+
+    <input type = "radio" id = "op_add" name = "operation" value = "add" onclick = "chooseOp()">
+    <label for = "op_add">sum</label><br>
+
+    <input type = "radio" id = "op_div" name = "operation" value = "div" onclick = "chooseOp()">
+    <label for = "op_div">divide</label><br>
+</form>
+
+<p id = "op_result">Operation result will be shown here</p>
 
 <script>
     function doDiscount() {
@@ -51,6 +64,28 @@
         }
 
         document.getElementById("result").innerHTML = "Costs are: " + costs;
+    }
+
+    function chooseOp() {
+        let count = Number(document.getElementById("numberItems").value);
+        let discountAt = Number(document.getElementById("numberForDiscount").value);
+
+        let mulOpt = document.getElementById("op_mul").checked;
+        let addOpt = document.getElementById("op_add").checked;
+        let divOpt = document.getElementById("op_div").checked;
+
+        let out = document.getElementById("op_result");
+
+        if (mulOpt) {
+            let res = count * discountAt;
+            out.innerHTML = count + " times " + discountAt + " is " + res;
+        } else if (addOpt) {
+            let res = count + discountAt;
+            out.innerHTML = count + " plus " + discountAt + " is " + res;
+        } else if (divOpt) {
+            let res = count / discountAt;
+            out.innerHTML = count + " divided by " + discountAt + " is " + res;
+        }
     }
 </script>
 
